@@ -19,7 +19,7 @@
 
 - 📝 Emulate typing by pasting clipboard contents into text input fields using clipboard paste commands.
 - 🕹️ Updated typing speed emulation.
-- 
+  
 ## 🌟 Original Features
 
 - 📝 Emulate typing by pasting clipboard contents into text input fields.
