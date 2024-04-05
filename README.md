@@ -1,3 +1,11 @@
+<p>
+  <b>PasteHuman - Enhanced Version</b>
+</p>
+
+<p>
+  This fork of PasteHuman introduces new features to enhance the user experience by simulating more natural typing patterns and support clipboard paste detection.
+</p>
+
 <p align="center">
   <img src="PasteHuman_Logo.jpg" alt="Logo">
 </p>
@@ -7,8 +15,12 @@
 </p>
 
 ---
+## 🌟 Enhanced Version Features
 
-## 🌟 Features
+- 📝 Emulate typing by pasting clipboard contents into text input fields using clipboard paste commands.
+- 🕹️ Updated typing speed emulation.
+- 
+## 🌟 Original Features
 
 - 📝 Emulate typing by pasting clipboard contents into text input fields.
 - ⏹️ Ability to stop the emulation.
@@ -25,9 +37,8 @@ Currently, this extension needs to be installed manually.
 
 ## 🎯 How to use
 
-1. Right-click on a text input field where you want to emulate typing.
-2. Select "Emulate typing" from the context menu to start emulating typing with the contents of your clipboard.
-3. If you want to stop the emulation before it completes, right-click again and select "Stop typing".
+1. Either, paste text like normal into a text input field where you want to emulate typing. Or, select "Emulate typing" from the context menu to start emulating typing with the contents of your clipboard.
+2. If you want to stop the emulation before it completes, right-click again and select "Stop typing".
 
 ## 📂 Files
 
