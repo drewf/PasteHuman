@@ -23,6 +23,20 @@ window.addEventListener("keydown", function () {
     console.log('content.js: Keydown event detected'); // Log keydown event
 });
 
+// Listen for paste events on all input and textarea elements
+document.querySelectorAll('input, textarea').forEach(element => {
+    element.addEventListener('paste', (e) => {
+        // Prevent the default paste action
+        e.preventDefault();
+        
+        // Get the text from the clipboard
+        const text = (e.clipboardData || window.clipboardData).getData('text');
+        
+        // Simulate typing
+        emulateTyping(text, currentTypingSession);
+    });
+});
+
 function emulateTyping(text, session, delayedStart) {
     const activeElement = document.activeElement;
     console.log('content.js: Active element:', activeElement); // Log the active element
@@ -47,19 +61,41 @@ function emulateTyping(text, session, delayedStart) {
                 activeElement.dispatchEvent(event);
 
                 // Attempt to insert the text using document.execCommand
-                document.execCommand("insertText", false, text[i++]);
+                document.execCommand("insertText", false, text[i]);
 
-                let delay = Math.random() * (200 - 50) + 50;
-
-                if (Math.random() < 0.05) {
-                    delay += Math.random() * (700 - 200) + 200;
-                }
+                // Add the delay between character insertions.
+                let delay = calculateDelay(text[i],text[i+1])
 
                 setTimeout(typeNextCharacter, delay);
+                i++;
             }
         }
 
         typeNextCharacter();
+    };
+
+    //More natural delay calculation.
+    const calculateDelay = (currentChar, nextChar) => {
+        // Base typing speed (milliseconds)
+        const baseDelay = 10;
+        // Introduce variability
+        const variability = 50;
+        // Adjust speed for spaces and punctuation for a more natural effect
+        const isSpaceOrPunctuation = /[\s,.!?;:]/;
+
+        let delay = baseDelay + Math.random() * variability;
+
+        // If the next character is a space or punctuation, add a slight pause
+        if (isSpaceOrPunctuation.test(nextChar)) {
+            delay += 100;
+        }
+
+        // If the current character is a space or punctuation, add a slight pause
+        if (isSpaceOrPunctuation.test(currentChar)) {
+            delay += 50;
+        }
+
+        return delay;
     };
 
     if (delayedStart) {
